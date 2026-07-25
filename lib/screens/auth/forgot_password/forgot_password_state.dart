@@ -1,0 +1,28 @@
+class ForgotPasswordState {
+  final bool isLoading;
+  final bool isSuccess;
+  final String? errorMessage;
+
+  const ForgotPasswordState({
+    this.isLoading = false,
+    this.isSuccess = false,
+    this.errorMessage,
+  });
+
+  ForgotPasswordState copyWith({
+    bool? isLoading,
+    bool? isSuccess,
+    String? errorMessage,
+    bool clearError = false,
+  }) {
+    return ForgotPasswordState(
+      isLoading: isLoading ?? this.isLoading,
+      isSuccess: isSuccess ?? this.isSuccess,
+      errorMessage: clearError ? null : (errorMessage ?? this.errorMessage),
+    );
+  }
+
+  factory ForgotPasswordState.initial() {
+    return const ForgotPasswordState();
+  }
+}
