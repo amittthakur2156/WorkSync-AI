@@ -11,12 +11,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Set up Flutter
+      - name: Setup Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.35.3"
+          flutter-version: "3.44.4"
+
+      - name: Verify Flutter installation
+        run: flutter --version
 
       - name: Install dependencies
         run: flutter pub get
@@ -24,7 +28,6 @@ jobs:
       - name: Analyze project
         run: flutter analyze
 
-      # Agar test folder nahi hai ya tests nahi likhe hain,
-      # to neeche wali 2 lines ko comment ya remove kar do.
+      # Uncomment only if you have tests
       # - name: Run tests
       #   run: flutter test
